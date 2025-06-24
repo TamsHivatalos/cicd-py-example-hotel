@@ -13,7 +13,6 @@ class TestHootel(object):
         options.add_experimental_option("detach", True)
         options.add_argument("--headless")
         self.browser = webdriver.Chrome(options=options)
-        self.browser.set_window_size(992, 600)
         self.browser.get(URL)
 
     def teardown_method(self):
@@ -24,6 +23,7 @@ class TestHootel(object):
     @allure.severity(allure.severity_level.TRIVIAL)
     @allure.tag("login")
     def test_login_with_992_px_window(self):
+        self.browser.set_window_size(992, 600)
         login_btn = self.browser.find_element(By.XPATH, '//a[@class="nav-link"]')
         login_btn.click()
 
@@ -55,6 +55,7 @@ class TestHootel(object):
     @allure.severity(allure.severity_level.TRIVIAL)
     @allure.tag("login")
     def test_login_with_991_px_window(self):
+        self.browser.set_window_size(991, 600)
         self.browser.find_element(By.XPATH, '//span[@class="navbar-toggler-icon"]').click()
         time.sleep(1)
         login_btn = self.browser.find_element(By.XPATH, '//a[@class="nav-link"]')
